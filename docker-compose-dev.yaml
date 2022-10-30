@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+
+  samba-server:
+    container_name: samba-server
+    build: .
+    environment:
+      - SAMBA_PASSWORD=test
+    ports:
+      - "445:445"
