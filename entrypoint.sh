@@ -17,7 +17,7 @@ workgroup = ${SAMBA_WORKGROUP}
 server role = standalone server
 create mask = 0644
 directory mask = 0755
-security = user
+force user = root
 
 [restricted]
 path = /media/samba/restricted
@@ -39,6 +39,8 @@ if ! (id "$SAMBA_USER" > /dev/null 2>&1); then
 fi
 (echo "$SAMBA_PASSWORD"; echo "$SAMBA_PASSWORD") |smbpasswd -s -a "$SAMBA_USER"
 
-testparm -s
+testparm --suppress-prompt
+
+ls -l /media/samba
 
 exec "$@"
