@@ -33,14 +33,11 @@ guest only = yes
 
 EOF
 
-id "$SAMBA_USER" || true
 if ! (id "$SAMBA_USER" > /dev/null 2>&1); then
     adduser "$SAMBA_USER" --quiet --disabled-password --disabled-login --no-create-home --gecos ""
 fi
 (echo "$SAMBA_PASSWORD"; echo "$SAMBA_PASSWORD") |smbpasswd -s -a "$SAMBA_USER"
 
 testparm --suppress-prompt
-
-ls -l /media/samba
 
 exec "$@"
