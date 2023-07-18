@@ -11,6 +11,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENV SAMBA_USER=user
 ENV SAMBA_PASSWORD=""
 ENV SAMBA_WORKGROUP=WORKGROUP
+ENV ENABLE_PUBLIC_SHARE=false
 
 ENTRYPOINT [ "/entrypoint.sh" ]
-CMD [ "smbd", "--foreground", "--log-stdout", "--no-process-group" ]
+CMD [ "smbd", "--foreground", "--debug-stdout", "--no-process-group" ]

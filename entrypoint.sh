@@ -24,14 +24,17 @@ path = /media/samba/restricted
 read only = no
 valid users = ${SAMBA_USER}
 guest ok = no
+EOF
 
+if [[ "$ENABLE_PUBLIC_SHARE" == true ]]; then
+    cat >> /etc/samba/smb.conf << EOF
 [public]
 path = /media/samba/public
 read only = no
 guest ok = yes
 guest only = yes
-
 EOF
+fi
 
 if ! (id "$SAMBA_USER" > /dev/null 2>&1); then
     adduser "$SAMBA_USER" --quiet --disabled-password --disabled-login --no-create-home --gecos ""

@@ -6,6 +6,8 @@ It provides a public share accessable by the guest user and a restricted share o
 
 ## Environment variables
 
+- `ENABLE_PUBLIC_SHARE`
+    - Set to true to enable a public share accessable with the guest user, default: `false`.
 - `SAMBA_USER`
     - Username for authentication. For example `SAMBA_USER=user`
 - `SAMBA_PASSWORD`

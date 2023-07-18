@@ -6,6 +6,7 @@ services:
     container_name: samba-server
     build: .
     environment:
+      - ENABLE_PUBLIC_SHARE=true
       - SAMBA_PASSWORD=test
     ports:
       - "445:445"
